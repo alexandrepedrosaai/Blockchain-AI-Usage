@@ -1,6 +1,16 @@
 # Blockchain-AI-Usage
 Institutions worldwide are exploring blockchain and AI usage to enhance transparency, security, and efficiency. Blockchain ensures immutable records, while AI drives intelligent automation and insights. Together, they empower finance, healthcare, and education with 
 innovative, trusted digital solutions
+# Web Search 
+![Screenshot_2026-01-23-05-00-35-117_u sage](https://github.com/user-attachments/assets/8f98c674-bf55-4ab5-8d68-6758edb88e4a)
+![Screenshot_2026-01-23-15-12-53-842_u sage](https://github.com/user-attachments/assets/6ca3da8f-4c16-4dee-86fd-3d823a9f9e4b)
+![Screenshot_2026-01-23-05-00-59-973_u sage](https://github.com/user-attachments/assets/41788f52-1697-4b82-8093-efb367f288ef)
+
+# Desktop Research 
+
+![Screenshot_2026-01-23-05-01-10-437_u sage](https://github.com/user-attachments/assets/c3221e19-1e4d-4fcc-aeb1-2fcea209f635)
+![Screenshot_2026-01-23-05-01-35-687_u sage](https://github.com/user-attachments/assets/0003e559-ddf3-496b-8af5-50b5d2995ec5)
+
 ```
 {
   "project": "Blockchain-AI-Usage",
