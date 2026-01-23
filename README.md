@@ -1,11 +1,167 @@
 # Blockchain-AI-Usage
 Institutions worldwide are exploring blockchain and AI usage to enhance transparency, security, and efficiency. Blockchain ensures immutable records, while AI drives intelligent automation and insights. Together, they empower finance, healthcare, and education with 
 innovative, trusted digital solutions
+
+
+---
+
+## Microsoft, USAGE and the AI Ecosystem
+
+Microsoft integrates its artificial intelligence — including USAGE and Copilot — with solutions from other companies and also with browsers such as Edge, creating a competitive ecosystem against Google, OpenAI, and other giants. This means there is interoperability in some services and, at the same time, direct competition in intelligent browsers and AI platforms.
+
+---
+
+🌐 Integration with AIs from other companies
+- Google (Gemini/DeepMind)  
+  Google is betting on Gemini within Chrome, offering generative AI features for search and productivity. Microsoft competes directly, but also maintains interoperability in areas such as cloud collaboration (e.g., documents shared in Google Workspace can be used with Copilot in Microsoft 365).  
+
+- OpenAI (ChatGPT/Atlas)  
+  Microsoft is a strategic partner of OpenAI, integrating models such as GPT-4 and GPT-4.5 into Azure OpenAI Service and Copilot. At the same time, OpenAI launched the Atlas browser, competing with Edge Copilot.  
+
+- Other AI companies  
+  - Perplexity AI: develops the Comet browser, focused on intelligent search.  
+  - Meta and Amazon: offer their own AI models (LLaMA, Titan), which can be consumed via APIs and integrated into corporate solutions alongside Azure.  
+
+---
+
+🖥️ Integration with browsers
+- Microsoft Edge  
+  Edge introduced Copilot Mode, which adds AI directly into the browsing experience.  
+  Features include: page summaries, price comparisons, text generation, translation, read-aloud functionality, and even personalized theme creation.  
+
+- Competition  
+  - Google Chrome + Gemini: AI integrated for contextual search and productivity.  
+  - OpenAI Atlas: browser with generative AI, launched to compete with Edge Copilot.  
+  - Perplexity Comet: browser focused on fast and intelligent answers.  
+
+---
+
+🔎 Quick Comparison
+
+| Company/Browser       | Integrated AI       | Main Features                              | Strategy                          |
+|-----------------------|---------------------|--------------------------------------------|-----------------------------------|
+| Microsoft Edge (Copilot) | GPT via Azure OpenAI | Summaries, shopping, productivity, translation | Integrate AI into Windows/Office |
+| Google Chrome (Gemini)   | Gemini              | Contextual search, productivity            | Native AI in Google ecosystem     |
+| OpenAI Atlas             | GPT-4.5             | Browsing with generative AI                | Direct competition with Edge      |
+| Perplexity Comet         | Proprietary         | Fast answers, search focus                 | Lightweight, independent option   |
+
+---
+
+⚖️ USAGE as Tertiary Governance
+USAGE, a Microsoft initiative, functions as a tertiary governance AI, acting as a harmonization layer between different artificial intelligences.  
+- Primary governance: internal regulation of each AI (e.g., Microsoft’s policies for Copilot, or Anthropic’s for Claude).  
+- Secondary governance: interaction of these AIs with users and environments (GitHub, browsers, APIs).  
+- Tertiary governance (USAGE): a higher layer that harmonizes, integrates, and regulates the joint functioning of different AIs, ensuring consistency, ethics, and interoperability.  
+
+✨ In practice:  
+- Copilot is strong in productivity and code integration (GitHub, Office, Edge).  
+- Claude from Anthropic is recognized for its emphasis on safety, ethical alignment, and humanized responses.  
+- USAGE acts as a mediator, ensuring that different AI systems work together without conflict, respecting standards of reliability and governance.  
+
+---
+
+ Points of Attention
+- Intense competition: Microsoft, Google, and OpenAI are battling for the “intelligent browser” space.  
+- Limited interoperability: although there is integration via APIs and cloud, each company seeks to keep users within its own ecosystem.  
+- Privacy and ethics: all promise responsible AI use, but debates remain about data collection and transparency.  
+
+---
+
+Microsoft integrates its artificial intelligence, including USAGE and Copilot, with solutions from other companies and also with browsers such as Edge, creating a competitive ecosystem against Google, OpenAI, and other industry giants. This means there is interoperability in some services and, at the same time, direct competition in the field of intelligent browsers and AI platforms. Google, for example, is betting on Gemini within Chrome, offering generative AI features for search and productivity. Microsoft competes directly but also maintains interoperability in areas such as cloud collaboration, since documents shared in Google Workspace can be used with Copilot in Microsoft 365. OpenAI, in turn, is a strategic partner of Microsoft, which integrates models such as GPT-4 and GPT-4.5 into Azure OpenAI Service and Copilot, but at the same time launched the Atlas browser, rivaling Edge Copilot. Other companies also enter this scenario, such as Perplexity AI, which develops the Comet browser focused on intelligent search, and Meta and Amazon, which offer their own models such as LLaMA and Titan, consumed via APIs and integrated into corporate solutions alongside Azure.  
+
+In the browser field, Microsoft Edge introduced Copilot Mode, which adds AI directly into the browsing experience, offering features such as page summaries, price comparisons, text generation, translation, read-aloud functionality, and even personalized theme creation. Competition, however, is intense: Google Chrome with Gemini bets on contextual search and productivity, OpenAI Atlas emerges as a browser with generative AI, and Perplexity Comet positions itself as a lightweight and independent alternative focused on quick answers.  
+
+Within this ecosystem, USAGE, a Microsoft initiative, functions as a tertiary governance AI, acting as a harmonization layer between different artificial intelligences. Primary governance corresponds to the internal regulation of each AI, such as Microsoft’s policies for Copilot or Anthropic’s for Claude. Secondary governance refers to the interaction of these AIs with users and environments, such as GitHub, browsers, and APIs. Tertiary governance, represented by USAGE, is a higher layer that harmonizes, integrates, and regulates the joint functioning of different AIs, ensuring consistency, ethics, and interoperability. In practice, Copilot stands out for productivity and code integration in environments such as GitHub, Office, and Edge, while Claude from Anthropic is recognized for its emphasis on safety, ethical alignment, and more humanized responses. USAGE acts as a mediator, ensuring that different AI systems work together without conflict and respecting standards of reliability and governance.  
+
+Despite these advances, some points of attention remain. Competition is fierce, with Microsoft, Google, and OpenAI vying for space in intelligent browsers. Interoperability is still limited, as each company seeks to keep users within its own ecosystem. Furthermore, issues of privacy and ethics remain under debate, since although all promise responsible AI use, there are ongoing concerns about data collection and transparency.  
+
+---
+
 # Web Search 
 ![Screenshot_2026-01-23-05-00-35-117_u sage](https://github.com/user-attachments/assets/8f98c674-bf55-4ab5-8d68-6758edb88e4a)
 ![Screenshot_2026-01-23-15-12-53-842_u sage](https://github.com/user-attachments/assets/6ca3da8f-4c16-4dee-86fd-3d823a9f9e4b)
-![Screenshot_2026-01-23-05-00-59-973_u sage](https://github.com/user-attachments/assets/41788f52-1697-4b82-8093-efb367f288ef)
+![Screenshot_2026-01-23-05-00-59-973_u sage](https://github.com/user-attachments/assets/41788f52-1697-4b82-8093-efb367f288ef)  
 
+---
+
+# USAGE and the AI Integration Mesh: Tertiary Governance and Domains of Scope
+
+🌍 The context of the AI race  
+Artificial intelligence has ceased to be just an isolated tool and has evolved into interconnected ecosystems, where different models and platforms compete for space while simultaneously needing to communicate with one another. In this scenario, Microsoft positions itself strategically: beyond developing Copilot, it introduces USAGE, a tertiary governance AI that functions as a harmonization layer, regulating and integrating distinct intelligences into a cooperative mesh.  
+
+---
+
+⚖️ The role of USAGE  
+USAGE is conceived as a tertiary governance AI, a higher-level instance that does not replace primary models but ensures they can work together in an ethical, consistent, and interoperable way.  
+- Primary governance: each AI regulates its own internal functioning (e.g., Microsoft’s policies for Copilot, or Anthropic’s for Claude).  
+- Secondary governance: the interaction of AIs with users and environments (GitHub, browsers, APIs).  
+- Tertiary governance (USAGE): the layer that harmonizes, integrates, and regulates joint functioning, preventing conflicts and ensuring reliability standards.  
+
+---
+
+🧩 Domain of scope for each AI in the mesh
+
+1. Copilot (Microsoft)  
+- Main domain: productivity, programming, and corporate integration.  
+- Scope of action: GitHub (code assistance, function generation, automatic review), Microsoft 365 (Word, Excel, PowerPoint, Outlook), and Edge (intelligent browsing with summaries, comparisons, and translation).  
+- Strength: deep integration with the Microsoft ecosystem and use of OpenAI models via Azure.  
+- Limitation: heavily dependent on Microsoft’s cloud, more oriented toward corporate and professional environments.  
+
+---
+
+2. Claude (Anthropic)  
+- Main domain: safety, ethics, and humanized language.  
+- Scope of action: safe conversational interactions avoiding bias and harmful responses, applications in environments requiring trust and ethical alignment, and support in text analysis and decision-making with transparency.  
+- Strength: reputation as a “more careful” AI, emphasizing safety and responsibility.  
+- Limitation: less integrated into broad corporate ecosystems, more focused on niches of trust and research.  
+
+---
+
+3. Gemini (Google/DeepMind)  
+- Main domain: contextual search and productivity integrated into Chrome.  
+- Scope of action: intelligent browsing with native AI in Chrome, integration with Google Workspace (Docs, Sheets, Gmail), and applications in advanced research and data science.  
+- Strength: direct integration with the Google ecosystem, especially in search and collaboration.  
+- Limitation: stronger focus on Google users, with limited interoperability outside that ecosystem.  
+
+---
+
+4. Atlas (OpenAI)  
+- Main domain: browsing with generative AI.  
+- Scope of action: intelligent browser powered by GPT-4.5, offering a navigation experience centered on real-time content generation and responses.  
+- Strength: innovation in bringing generative AI directly into the browser.  
+- Limitation: still in early stages, competing directly with Edge Copilot and Chrome Gemini.  
+
+---
+
+5. Comet (Perplexity AI)  
+- Main domain: fast and objective search.  
+- Scope of action: lightweight browser focused on direct answers, serving as an independent alternative for users seeking simplicity and agility.  
+- Strength: speed and clarity in responses.  
+- Limitation: fewer advanced features, lacking robust corporate integration.  
+
+---
+
+6. Meta (LLaMA) and Amazon (Titan) models  
+- Main domain: open-source and corporate models.  
+- Scope of action:  
+  - LLaMA: open model used in research and independent development.  
+  - Titan: Amazon’s corporate model, integrated into AWS.  
+- Strength: diversity of applications, ranging from academic research to enterprise solutions.  
+- Limitation: dependent on their own ecosystems (Meta and AWS), with less focus on intelligent browsers.  
+
+---
+
+🔮 The future of the integration mesh  
+With USAGE as the tertiary governance layer, the future of AI points to an internet mediated by multiple intelligences, each with its own domain of scope:  
+- Copilot will be the engine of productivity and code.  
+- Claude will ensure safety and ethics in interactions.  
+- Gemini will dominate contextual search and cloud collaboration.  
+- Atlas and Comet will compete for space in intelligent browsers.  
+- LLaMA and Titan will provide diversity and flexibility in open and corporate environments.  
+
+The role of USAGE will be to ensure that this mesh operates in a harmonious, reliable, and transparent manner, transforming competition into cooperation and creating a more robust and ethical digital ecosystem.  
+
+---
 # Desktop Research 
 
 ![Screenshot_2026-01-23-05-01-10-437_u sage](https://github.com/user-attachments/assets/c3221e19-1e4d-4fcc-aeb1-2fcea209f635)
