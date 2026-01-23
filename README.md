@@ -4,51 +4,46 @@ innovative, trusted digital solutions.
 
 # Here’s the full translation of everything you asked into English, keeping the explanatory depth and structure intact:
 ---
-'''
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+    codify_repos_combined.py
 
-"""
-codify_repos_combined.py
+    Script único para coletar e codificar informações dos repositórios:
+    1) alexandrepedrosaai/GROK--Coopetition--GitHub-Copilot
+    2) alexandrepedrosaai/Blockchain-AI-Usage
 
-Script único para coletar e codificar informações dos repositórios:
-1) alexandrepedrosaai/GROK--Coopetition--GitHub-Copilot
-2) alexandrepedrosaai/Blockchain-AI-Usage
+    Funções:
+     - Buscar metadados dos repositórios
+    - Listar arquivos da raiz
+    - Listar commits recentes
+    - Listar todos os Pull Requests (abertos e fechados)
+    - Exportar em JSON/CSV
 
-Funções:
-- Buscar metadados dos repositórios
-- Listar arquivos da raiz
-- Listar commits recentes
-- Listar todos os Pull Requests (abertos e fechados)
-- Exportar em JSON/CSV
-
-Uso:
+    Uso:
     python codify_repos_combined.py --all --out all.json --csv all.csv
-"""
+    """
 
-import os
-import sys
-import json
-import time
-import argparse
-import requests
+     import os
+     import sys
+     import json
+     import time
+     import argparse
+     import requests
 
-try:
+    try:
     import pandas as pd
     HAS_PANDAS = True
-except Exception:
+    except Exception:
     HAS_PANDAS = False
 
-GITHUB_API = "https://api.github.com"
-TOKEN = os.getenv("GITHUB_TOKEN")
-HEADERS = {
+    GITHUB_API = "https://api.github.com"
+    TOKEN = os.getenv("GITHUB_TOKEN")
+    HEADERS = {
     "Accept": "application/vnd.github+json",
     "User-Agent": "codify-repos/1.0",
-}
-if TOKEN:
+    }
+    if TOKEN:
     HEADERS["Authorization"] = f"Bearer {TOKEN}"
 
-def paginated_get(url, params=None):
+    def paginated_get(url, params=None):
     items = []
     page = 1
     while True:
@@ -69,31 +64,31 @@ def paginated_get(url, params=None):
         page += 1
     return items
 
-def get_repo_metadata(owner, repo):
+    def get_repo_metadata(owner, repo):
     url = f"{GITHUB_API}/repos/{owner}/{repo}"
     resp = requests.get(url, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     return resp.json()
 
-def get_repo_files(owner, repo):
+    def get_repo_files(owner, repo):
     url = f"{GITHUB_API}/repos/{owner}/{repo}/contents"
     resp = requests.get(url, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     return resp.json()
 
-def get_commits(owner, repo):
+    def get_commits(owner, repo):
     url = f"{GITHUB_API}/repos/{owner}/{repo}/commits"
     return paginated_get(url)
 
-def get_pull_requests(owner, repo, state="all"):
+    def get_pull_requests(owner, repo, state="all"):
     url = f"{GITHUB_API}/repos/{owner}/{repo}/pulls"
     return paginated_get(url, {"state": state})
 
-def save_json(data, path):
+    def save_json(data, path):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-def save_csv(rows, path):
+    def save_csv(rows, path):
     if HAS_PANDAS:
         pd.DataFrame(rows).to_csv(path, index=False, encoding="utf-8")
     else:
@@ -106,7 +101,7 @@ def save_csv(rows, path):
                 vals = [str(r.get(c, "")) for c in cols]
                 f.write(",".join(vals) + "\n")
 
-def codify_repo(owner, repo):
+    def codify_repo(owner, repo):
     print(f"→ Codificando {owner}/{repo}...")
     meta = get_repo_metadata(owner, repo)
     files = get_repo_files(owner, repo)
@@ -119,7 +114,7 @@ def codify_repo(owner, repo):
         "pull_requests": prs,
     }
 
-def main():
+     def main():
     ap = argparse.ArgumentParser(description="Codificar repositórios em Python")
     ap.add_argument("--all", action="store_true", help="Executar ambos os repositórios")
     ap.add_argument("--out", type=str, help="Arquivo JSON de saída")
@@ -170,9 +165,10 @@ def main():
 
     if not args.out and not args.csv:
         print(json.dumps(result, ensure_ascii=False, indent=2))
-    if __name__ == "__main__":
+
+     if __name__ == "__main__":
     main()
-'''
+
 ---
 
 ## GitHub Copilot and Claude in AI Usage
