@@ -1136,3 +1136,9 @@ By combining Web Connectors and Desktop Extensions, Claude becomes a technical c
   }
 }
 ````
+---
+![Screenshot_2026-01-23-05-27-15-481_com microsoft bing](https://github.com/user-attachments/assets/ec70e6be-d661-4377-a124-b22b25e088b3)
+![Screenshot_2026-01-23-05-27-01-226_com microsoft bing](https://github.com/user-attachments/assets/fa761814-9197-4d51-991c-b44f5095bc51)
+![Screenshot_2026-01-23-05-25-39-009_com microsoft bing](https://github.com/user-attachments/assets/9f5a64e7-db57-480e-af8b-4feeeab89d06)
+![Screenshot_2026-01-23-05-25-27-004_com microsoft bing](https://github.com/user-attachments/assets/1b868ab5-0155-4fc4-92f4-45b6215f343a)
+![Screenshot_2026-01-23-05-23-04-376_u sage](https://github.com/user-attachments/assets/505ceb07-11f0-43cc-96d9-826fac6fdfd2)
