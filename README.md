@@ -438,5 +438,284 @@ def print_summary():
 
 if __name__ == "__main__":
     print_summary()
-```
+
+`````
 ---
+##  Python script (.py) in English that codifies the repository Blockchain-AI-Usage
+
+````
+#!/usr/bin/env python3
+"""
+Blockchain-AI-Usage Codification
+
+This script synthesizes information about the repository
+'Blockchain-AI-Usage' by alexandrepedrosaai.
+
+It includes:
+1. Repository metadata
+2. AI usage
+3. Blockchain usage
+4. Combined AI + Blockchain applications
+5. Key institutions (Meta, Microsoft, Google, xAI, Anthropic/Claude)
+6. Edge browser tabs metadata
+"""
+
+# === Repository Metadata ===
+repository = {
+    "name": "Blockchain-AI-Usage",
+    "owner": "alexandrepedrosaai",
+    "description": (
+        "Institutions worldwide are exploring blockchain and AI usage to enhance transparency, "
+        "security, and efficiency. Blockchain ensures immutable records, while AI drives intelligent "
+        "automation and insights. Together, they empower finance, healthcare, and education with "
+        "innovative, trusted digital solutions."
+    ),
+    "license": "AGPL-3.0",
+    "language": "Python",
+    "files": ["README.md", "IA-Usage.py"]
+}
+
+# === AI Usage ===
+ai_usage = {
+    "role": "Artificial Intelligence provides automation, insights, and intelligent decision-making.",
+    "benefits": [
+        "Pattern recognition and predictive analytics",
+        "Process automation and optimization",
+        "Adaptive learning and personalization",
+        "Enhanced decision support"
+    ]
+}
+
+# === Blockchain Usage ===
+blockchain_usage = {
+    "role": "Blockchain ensures immutable records, transparency, and decentralized trust.",
+    "benefits": [
+        "Tamper-proof data storage",
+        "Secure and transparent transactions",
+        "Decentralized governance",
+        "Auditability and compliance"
+    ]
+}
+
+# === Combined AI + Blockchain ===
+combined_usage = {
+    "vision": "AI + Blockchain together create trusted, intelligent digital ecosystems.",
+    "applications": [
+        "Finance: fraud prevention, secure transactions, smart contracts",
+        "Healthcare: reliable patient records, predictive diagnostics",
+        "Education: transparent credentialing, adaptive learning systems",
+        "Supply Chain: traceability, fair trade validation, compliance checks"
+    ]
+}
+
+# === Institutions ===
+institutions = [
+    {
+        "name": "Meta",
+        "focus": "Social platforms, open-source AI",
+        "role": "Democratizing AI tools, embedding into social ecosystems",
+        "contributions": ["LLaMA models", "FAIR research", "AI for moderation"]
+    },
+    {
+        "name": "Microsoft",
+        "focus": "Productivity, cloud, developer tools",
+        "role": "Embedding AI into enterprise and daily work",
+        "contributions": ["GitHub Copilot", "Azure AI Foundry", "Partnerships with OpenAI, Anthropic, xAI"]
+    },
+    {
+        "name": "Google",
+        "focus": "Search, cloud, research",
+        "role": "Infrastructure and frontier research",
+        "contributions": ["Gemini models", "DeepMind breakthroughs", "AI-powered data centers"]
+    },
+    {
+        "name": "xAI",
+        "focus": "Frontier reasoning AI",
+        "role": "Developing models with strong reasoning and transparency",
+        "contributions": ["Grok models", "Integration with Azure AI Foundry"]
+    },
+    {
+        "name": "Anthropic (Claude)",
+        "focus": "Safety, alignment, trustworthy AI",
+        "role": "Building constitutional AI systems",
+        "contributions": ["Claude models", "Claude Code in GitHub Copilot"]
+    }
+]
+
+# === Edge Tabs Metadata ===
+edge_all_open_tabs = [
+    {
+        "pageTitle": "Blockchain-AI-Usage Repository",
+        "pageUrl": "https://github.com/alexandrepedrosaai/Blockchain-AI-Usage",
+        "tabId": 1096897364,
+        "isCurrent": True
+    },
+    {
+        "pageTitle": "Extensions for Visual Studio family of products | Visual Studio Marketplace",
+        "pageUrl": "https://marketplace.visualstudio.com/azuredevops",
+        "tabId": 1096897323,
+        "isCurrent": False
+    },
+    {
+        "pageTitle": "alexandre pedrosa meta - Search",
+        "pageUrl": "https://www.bing.com/search",
+        "tabId": 1096897316,
+        "isCurrent": False
+    },
+    {
+        "pageTitle": "Blockchain-AI-Usage/README.md at main · alexandrepedrosaai/Blockchain-AI-Usage",
+        "pageUrl": "https://github.com/alexandrepedrosaai/Blockchain-AI-Usage/blob/main/README.md",
+        "tabId": 1096897369,
+        "isCurrent": False
+    }
+]
+
+# === Print Summary ===
+def print_summary():
+    print("=== Repository Metadata ===")
+    for k, v in repository.items():
+        print(f"{k}: {v}")
+    
+    print("\n=== AI Usage ===")
+    print(f"Role: {ai_usage['role']}")
+    for b in ai_usage["benefits"]:
+        print(f"- {b}")
+    
+    print("\n=== Blockchain Usage ===")
+    print(f"Role: {blockchain_usage['role']}")
+    for b in blockchain_usage["benefits"]:
+        print(f"- {b}")
+    
+    print("\n=== Combined AI + Blockchain ===")
+    print(f"Vision: {combined_usage['vision']}")
+    for app in combined_usage["applications"]:
+        print(f"- {app}")
+    
+    print("\n=== Institutions ===")
+    for inst in institutions:
+        print(f"{inst['name']} → Focus: {inst['focus']}, Role: {inst['role']}")
+        print("  Contributions:")
+        for c in inst["contributions"]:
+            print(f"   - {c}")
+    
+    print("\n=== Edge Tabs Metadata ===")
+    for tab in edge_all_open_tabs:
+        print(f"TabID {tab['tabId']} | Current: {tab['isCurrent']}")
+        print(f"Title: {tab['pageTitle']}")
+        print(f"URL: {tab['pageUrl']}\n")
+
+if __name__ == "__main__":
+    print_summary()
+````
+# Python test script that allows you to run simple input/output tests about AI Usage and Blockchain
+
+```
+#!/usr/bin/env python3
+"""
+AI Usage & Blockchain Test Script
+
+This script allows interactive input/output tests.
+You can type queries about AI Usage or Blockchain,
+and the script will return structured answers.
+"""
+
+# Knowledge base
+ai_usage = {
+    "role": "Artificial Intelligence provides automation, insights, and intelligent decision-making.",
+    "benefits": [
+        "Pattern recognition and predictive analytics",
+        "Process automation and optimization",
+        "Adaptive learning and personalization",
+        "Enhanced decision support"
+    ]
+}
+
+blockchain_usage = {
+    "role": "Blockchain ensures immutable records, transparency, and decentralized trust.",
+    "benefits": [
+        "Tamper-proof data storage",
+        "Secure and transparent transactions",
+        "Decentralized governance",
+        "Auditability and compliance"
+    ]
+}
+
+combined_usage = {
+    "vision": "AI + Blockchain together create trusted, intelligent digital ecosystems.",
+    "applications": [
+        "Finance: fraud prevention, secure transactions, smart contracts",
+        "Healthcare: reliable patient records, predictive diagnostics",
+        "Education: transparent credentialing, adaptive learning systems",
+        "Supply Chain: traceability, fair trade validation, compliance checks"
+    ]
+}
+
+def answer_query(query: str):
+    query = query.lower()
+    if "ai" in query:
+        print("=== AI Usage ===")
+        print(f"Role: {ai_usage['role']}")
+        for b in ai_usage["benefits"]:
+            print(f"- {b}")
+    elif "blockchain" in query:
+        print("=== Blockchain Usage ===")
+        print(f"Role: {blockchain_usage['role']}")
+        for b in blockchain_usage["benefits"]:
+            print(f"- {b}")
+    elif "combined" in query or "together" in query:
+        print("=== Combined AI + Blockchain ===")
+        print(f"Vision: {combined_usage['vision']}")
+        for app in combined_usage["applications"]:
+            print(f"- {app}")
+    else:
+        print("Query not recognized. Try 'AI', 'Blockchain', or 'Combined'.")
+
+if __name__ == "__main__":
+    print("AI Usage & Blockchain Test Console")
+    print("Type 'AI', 'Blockchain', or 'Combined' to see outputs. Type 'exit' to quit.\n")
+    while True:
+        user_input = input("Enter query: ")
+        if user_input.lower() == "exit":
+            print("Exiting test console. Goodbye!")
+            break
+        answer_query(user_input)
+        print()
+````
+## Example Test Runs
+## Input:
+````
+AI
+````
+---
+## Output:
+````
+=== AI Usage ===
+Role: Artificial Intelligence provides automation, insights, and intelligent decision-making.
+- Pattern recognition and predictive analytics
+- Process automation and optimization
+- Adaptive learning and personalization
+- Enhanced decision support
+````
+---
+# Input:
+````
+Blockchain
+````
+# Output:
+````
+=== Blockchain Usage ===
+Role: Blockchain ensures immutable records, transparency, and decentralized trust.
+- Tamper-proof data storage
+- Secure and transparent transactions
+- Decentralized governance
+- Auditability and compliance
+````
+# Input: Combined
+# Output:
+````
+=== Combined AI + Blockchain ===
+Vision: AI + Blockchain together create trusted, intelligent digital ecosystems.
+- Finance: fraud prevention, secure transactions, smart contracts
+- Healthcare: reliable patient records, predictive diagnostics
+- Education: transparent credentialing, adaptive learning systems
+- Supply Chain: traceability, fair trade validation, compliance checks
