@@ -1,8 +1,88 @@
 # Blockchain-AI-Usage
 Institutions worldwide are exploring blockchain and AI usage to enhance transparency, security, and efficiency. Blockchain ensures immutable records, while AI drives intelligent automation and insights. Together, they empower finance, healthcare, and education with 
 innovative, trusted digital solutions
-
----
+```
+{
+  "project": "Blockchain-AI-Usage",
+  "description": "An ecosystem model for tertiary integration of superintelligences, cloud platforms, financial systems, and blockchain networks within the IA Usage App.",
+  "layers": {
+    "interpretive_layer": {
+      "name": "Claude",
+      "role": "Semantic gateway and information transfer",
+      "functions": [
+        "Interpret human language",
+        "Clarify requirements",
+        "Transfer structured information to Copilot"
+      ],
+      "integrations": [
+        "Spotify",
+        "PayPal",
+        "Blockchain Networks",
+        "Google Gemini",
+        "GPT-5 Search",
+        "Grok Fast Code",
+        "Meta AI"
+      ]
+    },
+    "generative_layer": {
+      "name": "GitHub Copilot",
+      "role": "Primary algorithmic integrator and decision-maker",
+      "functions": [
+        "Generate structured code",
+        "Organize project files",
+        "Create automated tests",
+        "Integrate outputs from superintelligences"
+      ],
+      "strong_integrations": [
+        "Claude",
+        "GPT-5",
+        "Gemini (Google)",
+        "Grok Fast Code 1"
+      ],
+      "excluded_integrations": [
+        "Meta AI (cloud facilitator only)"
+      ]
+    },
+    "orchestration_layer": {
+      "name": "GitHub Actions",
+      "role": "Pipeline automation and orchestration",
+      "functions": [
+        "Automate builds",
+        "Run validations",
+        "Ensure reproducibility"
+      ]
+    },
+    "execution_layer": {
+      "name": "Microsoft Azure",
+      "role": "Cloud execution environment",
+      "functions": [
+        "Host applications",
+        "Provide scalability",
+        "Expose endpoints to users"
+      ]
+    }
+  },
+  "auxiliary_players": {
+    "Copilot Chat": "Natural language interface for developers",
+    "XAi": "External AI contributor",
+    "Meta AI": "Cloud integrator, not part of algorithmic decision loop",
+    "Google": "Parent ecosystem for Gemini",
+    "Financial Systems": ["Spotify", "PayPal"],
+    "Blockchain": "Decentralized verification and smart contracts"
+  },
+  "strategic_flow": {
+    "step1": "Claude interprets and structures data",
+    "step2": "Claude transfers information to GitHub Copilot",
+    "step3": "Copilot integrates with GPT-5, Gemini, Grok, and Claude",
+    "step4": "Copilot orchestrates workflows via GitHub Actions",
+    "step5": "Azure executes and hosts applications",
+    "step6": "Copilot Chat enables developer interaction"
+  },
+  "conclusion": "The IA Usage App ecosystem demonstrates tertiary integration where semantic clarity, algorithmic precision, and cloud scalability converge. Claude acts as the semantic gateway, Meta AI as the cloud integrator, and GitHub Copilot as the algorithmic conductor. Together, they form a dynamic architecture capable of transforming software development, financial systems, and decentralized networks."
+}
+```
+∆∆§---∆∆§
+```
     codify_repos_combined.py
 
     Script único para coletar e codificar informações dos repositórios:
