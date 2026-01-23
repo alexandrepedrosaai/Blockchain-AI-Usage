@@ -1144,3 +1144,284 @@ By combining Web Connectors and Desktop Extensions, Claude becomes a technical c
 ![Screenshot_2026-01-23-05-25-39-009_com microsoft bing](https://github.com/user-attachments/assets/9f5a64e7-db57-480e-af8b-4feeeab89d06)
 ![Screenshot_2026-01-23-05-25-27-004_com microsoft bing](https://github.com/user-attachments/assets/1b868ab5-0155-4fc4-92f4-45b6215f343a)
 ![Screenshot_2026-01-23-05-23-04-376_u sage](https://github.com/user-attachments/assets/505ceb07-11f0-43cc-96d9-826fac6fdfd2)
+---
+# codify_repos.py
+```
+---
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+codify_repos.py
+
+Funções:
+1) Codificar PRs fechados de alexandrepedrosaai/GROK--Coopetition--GitHub-Copilot
+2) Codificar metadados e arquivos de alexandrepedrosaai/Blockchain-AI-Usage
+3) Exportar JSON/CSV
+4) CLI:
+   - PRs GROK:      python codify_repos.py --grok-prs --out out.json --csv out.csv
+   - Blockchain AI: python codify_repos.py --blockchain --out bc.json --csv bc.csv
+   - Ambos:         python codify_repos.py --all --out all.json
+
+Requisitos:
+- requests, pandas (opcional para CSV; se não houver, salva CSV manualmente)
+"""
+
+import os
+import sys
+import json
+import time
+import argparse
+from typing import List, Dict, Optional, Any
+
+try:
+    import requests
+except ImportError:
+    print("Instale 'requests': pip install requests", file=sys.stderr)
+    sys.exit(1)
+
+# pandas é opcional
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except Exception:
+    HAS_PANDAS = False
+
+GITHUB_API = "https://api.github.com"
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+
+HEADERS = {
+    "Accept": "application/vnd.github+json",
+    "User-Agent": "codify-repos/1.0",
+}
+if GITHUB_TOKEN:
+    HEADERS["Authorization"] = f"Bearer {GITHUB_TOKEN}"
+
+# ---------------------------
+# Utilidades
+# ---------------------------
+
+def save_json(data: Any, path: Optional[str]) -> None:
+    if not path:
+        return
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+def save_csv(rows: List[Dict[str, Any]], path: Optional[str]) -> None:
+    if not path:
+        return
+    if HAS_PANDAS:
+        df = pd.DataFrame(rows)
+        df.to_csv(path, index=False, encoding="utf-8")
+    else:
+        # CSV manual
+        if not rows:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write("")
+            return
+        cols = list(rows[0].keys())
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(",".join(cols) + "\n")
+            for r in rows:
+                vals = []
+                for c in cols:
+                    v = r.get(c, "")
+                    # escapar vírgulas e aspas
+                    s = str(v).replace('"', '""')
+                    if "," in s or "\n" in s:
+                        s = f'"{s}"'
+                    vals.append(s)
+                f.write(",".join(vals) + "\n")
+
+def paginated_get(url: str, params: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Busca paginada na API do GitHub."""
+    items: List[Dict[str, Any]] = []
+    page = 1
+    while True:
+        p = dict(params)
+        p["page"] = page
+        resp = requests.get(url, headers=HEADERS, params=p, timeout=30)
+        if resp.status_code == 403 and "rate limit" in resp.text.lower():
+            # espera simples e tenta novamente
+            time.sleep(5)
+            continue
+        resp.raise_for_status()
+        batch = resp.json()
+        if not isinstance(batch, list) or not batch:
+            break
+        items.extend(batch)
+        # se veio menos que per_page, acabou
+        if len(batch) < p.get("per_page", 100):
+            break
+        page += 1
+    return items
+
+# ---------------------------
+# 1) Codificar PRs fechados (GROK--Coopetition--GitHub-Copilot)
+# ---------------------------
+
+def codify_grok_closed_prs(owner: str = "alexandrepedrosaai",
+                           repo: str = "GROK--Coopetition--GitHub-Copilot") -> Dict[str, Any]:
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/pulls"
+    prs = paginated_get(url, {"state": "closed", "per_page": 100})
+    # normalizar
+    normalized: List[Dict[str, Any]] = []
+    for pr in prs:
+        normalized.append({
+            "id": pr.get("id"),
+            "number": pr.get("number"),
+            "title": pr.get("title"),
+            "state": pr.get("state"),
+            "merged": bool(pr.get("merged_at")),
+            "merged_at": pr.get("merged_at"),
+            "closed_at": pr.get("closed_at"),
+            "created_at": pr.get("created_at"),
+            "user_login": (pr.get("user") or {}).get("login"),
+            "head_ref": (pr.get("head") or {}).get("ref"),
+            "base_ref": (pr.get("base") or {}).get("ref"),
+            "html_url": pr.get("html_url"),
+        })
+    summary = {
+        "repo": f"{owner}/{repo}",
+        "count_closed": len(prs),
+        "count_merged": sum(1 for x in normalized if x["merged"]),
+        "latest_merged_at": max(
+            [x["merged_at"] for x in normalized if x["merged"] and x["merged_at"]],
+            default=None
+        ),
+    }
+    return {"summary": summary, "items": normalized}
+
+# ---------------------------
+# 2) Codificar Blockchain-AI-Usage (metadados, arquivos, commits)
+# ---------------------------
+
+def codify_blockchain_ai_usage(owner: str = "alexandrepedrosaai",
+                               repo: str = "Blockchain-AI-Usage") -> Dict[str, Any]:
+    base = f"{GITHUB_API}/repos/{owner}/{repo}"
+
+    # metadados do repo
+    repo_resp = requests.get(base, headers=HEADERS, timeout=30)
+    repo_resp.raise_for_status()
+    repo_data = repo_resp.json()
+
+    # arquivos (conteúdo raiz)
+    contents_resp = requests.get(f"{base}/contents", headers=HEADERS, timeout=30)
+    contents_resp.raise_for_status()
+    contents = contents_resp.json()
+    files = []
+    for c in contents if isinstance(contents, list) else []:
+        files.append({
+            "name": c.get("name"),
+            "path": c.get("path"),
+            "type": c.get("type"),
+            "size": c.get("size"),
+            "download_url": c.get("download_url"),
+        })
+
+    # commits recentes
+    commits = paginated_get(f"{base}/commits", {"per_page": 50})
+    commits_norm = []
+    for cm in commits:
+        commit = cm.get("commit", {})
+        author = commit.get("author", {}) or {}
+        committer = commit.get("committer", {}) or {}
+        commits_norm.append({
+            "sha": cm.get("sha"),
+            "message": commit.get("message"),
+            "author_name": author.get("name"),
+            "author_date": author.get("date"),
+            "committer_name": committer.get("name"),
+            "committer_date": committer.get("date"),
+            "html_url": cm.get("html_url"),
+        })
+
+    # pull requests (opcional)
+    prs = paginated_get(f"{base}/pulls", {"state": "all", "per_page": 100})
+    prs_norm = []
+    for pr in prs:
+        prs_norm.append({
+            "number": pr.get("number"),
+            "title": pr.get("title"),
+            "state": pr.get("state"),
+            "merged": bool(pr.get("merged_at")),
+            "merged_at": pr.get("merged_at"),
+            "user_login": (pr.get("user") or {}).get("login"),
+            "html_url": pr.get("html_url"),
+        })
+
+    # estrutura final
+    return {
+        "repository": {
+            "full_name": repo_data.get("full_name"),
+            "description": repo_data.get("description"),
+            "license": (repo_data.get("license") or {}).get("spdx_id"),
+            "language": repo_data.get("language"),
+            "stargazers_count": repo_data.get("stargazers_count"),
+            "forks_count": repo_data.get("forks_count"),
+            "watchers_count": repo_data.get("subscribers_count"),
+            "default_branch": repo_data.get("default_branch"),
+            "created_at": repo_data.get("created_at"),
+            "updated_at": repo_data.get("updated_at"),
+            "pushed_at": repo_data.get("pushed_at"),
+            "html_url": repo_data.get("html_url"),
+        },
+        "files": files,
+        "commits_recent": commits_norm,
+        "pull_requests": prs_norm,
+    }
+
+# ---------------------------
+# CLI
+# ---------------------------
+
+def parse_args():
+    ap = argparse.ArgumentParser(description="Codificar repositórios do Alexandre em .py (JSON/CSV).")
+    ap.add_argument("--grok-prs", action="store_true", help="Codificar PRs fechados do GROK--Coopetition--GitHub-Copilot")
+    ap.add_argument("--blockchain", action="store_true", help="Codificar Blockchain-AI-Usage (metadados/arquivos/commits)")
+    ap.add_argument("--all", action="store_true", help="Executar ambos")
+    ap.add_argument("--out", type=str, help="Arquivo de saída JSON")
+    ap.add_argument("--csv", type=str, help="Arquivo de saída CSV (lista principal)")
+    return ap.parse_args()
+
+def main():
+    args = parse_args()
+    if not (args.grok_prs or args.blockchain or args.all):
+        print("Use --grok-prs, --blockchain ou --all. Ex.: python codify_repos.py --all --out all.json", file=sys.stderr)
+        sys.exit(1)
+
+    result: Dict[str, Any] = {}
+
+    if args.grok_prs or args.all:
+        print("→ Codificando PRs fechados de GROK--Coopetition--GitHub-Copilot...")
+        grok = codify_grok_closed_prs()
+        result["grok_closed_prs"] = grok
+
+    if args.blockchain or args.all:
+        print("→ Codificando Blockchain-AI-Usage...")
+        bc = codify_blockchain_ai_usage()
+        result["blockchain_ai_usage"] = bc
+
+    # salvar JSON
+    if args.out:
+        save_json(result, args.out)
+        print(f"✓ JSON salvo em: {args.out}")
+
+    # salvar CSV (se solicitado): escolhemos a lista mais útil
+    if args.csv:
+        rows: List[Dict[str, Any]] = []
+        if "grok_closed_prs" in result:
+            rows.extend(result["grok_closed_prs"]["items"])
+        elif "blockchain_ai_usage" in result:
+            rows.extend(result["blockchain_ai_usage"]["commits_recent"])
+        save_csv(rows, args.csv)
+        print(f"✓ CSV salvo em: {args.csv}")
+
+    # se não pediu arquivo, imprime resumo
+    if not args.out and not args.csv:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+
+if __name__ == "__main__":
+    main()
+```
+---
