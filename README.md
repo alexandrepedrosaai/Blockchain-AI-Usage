@@ -1,8 +1,7 @@
 # Blockchain-AI-Usage
 Institutions worldwide are exploring blockchain and AI usage to enhance transparency, security, and efficiency. Blockchain ensures immutable records, while AI drives intelligent automation and insights. Together, they empower finance, healthcare, and education with 
-innovative, trusted digital solutions.
+innovative, trusted digital solutions
 
-# Here’s the full translation of everything you asked into English, keeping the explanatory depth and structure intact:
 ---
     codify_repos_combined.py
 
@@ -175,6 +174,7 @@ innovative, trusted digital solutions.
 
 GitHub Copilot is now entering a second stage of integration with GPT‑5 and Claude models, marking a new era of AI interoperability within developer tools. GitHub Chat is becoming a hub where Claude Sonnet 4 and GPT‑5 variants operate side by side, each optimized for different reasoning and coding tasks.
 
+![Screenshot_2026-01-17-22-09-03-068_com facebook katana-edit](https://github.com/user-attachments/assets/24baea8b-b65e-4681-8c15-5c97e6550819)
 ---
 
 🔄 Claude + GPT‑5 in GitHub Copilot: What’s Happening?
