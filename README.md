@@ -3,7 +3,177 @@ Institutions worldwide are exploring blockchain and AI usage to enhance transpar
 innovative, trusted digital solutions.
 
 # Here’s the full translation of everything you asked into English, keeping the explanatory depth and structure intact:
+---
+'''
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+"""
+codify_repos_combined.py
+
+Script único para coletar e codificar informações dos repositórios:
+1) alexandrepedrosaai/GROK--Coopetition--GitHub-Copilot
+2) alexandrepedrosaai/Blockchain-AI-Usage
+
+Funções:
+- Buscar metadados dos repositórios
+- Listar arquivos da raiz
+- Listar commits recentes
+- Listar todos os Pull Requests (abertos e fechados)
+- Exportar em JSON/CSV
+
+Uso:
+    python codify_repos_combined.py --all --out all.json --csv all.csv
+"""
+
+import os
+import sys
+import json
+import time
+import argparse
+import requests
+
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except Exception:
+    HAS_PANDAS = False
+
+GITHUB_API = "https://api.github.com"
+TOKEN = os.getenv("GITHUB_TOKEN")
+HEADERS = {
+    "Accept": "application/vnd.github+json",
+    "User-Agent": "codify-repos/1.0",
+}
+if TOKEN:
+    HEADERS["Authorization"] = f"Bearer {TOKEN}"
+
+def paginated_get(url, params=None):
+    items = []
+    page = 1
+    while True:
+        p = dict(params or {})
+        p["page"] = page
+        p["per_page"] = 100
+        resp = requests.get(url, headers=HEADERS, params=p, timeout=30)
+        if resp.status_code == 403 and "rate limit" in resp.text.lower():
+            time.sleep(5)
+            continue
+        resp.raise_for_status()
+        batch = resp.json()
+        if not isinstance(batch, list) or not batch:
+            break
+        items.extend(batch)
+        if len(batch) < p["per_page"]:
+            break
+        page += 1
+    return items
+
+def get_repo_metadata(owner, repo):
+    url = f"{GITHUB_API}/repos/{owner}/{repo}"
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+    resp.raise_for_status()
+    return resp.json()
+
+def get_repo_files(owner, repo):
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/contents"
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+    resp.raise_for_status()
+    return resp.json()
+
+def get_commits(owner, repo):
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/commits"
+    return paginated_get(url)
+
+def get_pull_requests(owner, repo, state="all"):
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/pulls"
+    return paginated_get(url, {"state": state})
+
+def save_json(data, path):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+def save_csv(rows, path):
+    if HAS_PANDAS:
+        pd.DataFrame(rows).to_csv(path, index=False, encoding="utf-8")
+    else:
+        if not rows:
+            return
+        cols = list(rows[0].keys())
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(",".join(cols) + "\n")
+            for r in rows:
+                vals = [str(r.get(c, "")) for c in cols]
+                f.write(",".join(vals) + "\n")
+
+def codify_repo(owner, repo):
+    print(f"→ Codificando {owner}/{repo}...")
+    meta = get_repo_metadata(owner, repo)
+    files = get_repo_files(owner, repo)
+    commits = get_commits(owner, repo)
+    prs = get_pull_requests(owner, repo)
+    return {
+        "metadata": meta,
+        "files": files,
+        "commits": commits,
+        "pull_requests": prs,
+    }
+
+def main():
+    ap = argparse.ArgumentParser(description="Codificar repositórios em Python")
+    ap.add_argument("--all", action="store_true", help="Executar ambos os repositórios")
+    ap.add_argument("--out", type=str, help="Arquivo JSON de saída")
+    ap.add_argument("--csv", type=str, help="Arquivo CSV de saída (lista principal)")
+    args = ap.parse_args()
+
+    result = {}
+
+    if args.all:
+        result["grok"] = codify_repo("alexandrepedrosaai", "GROK--Coopetition--GitHub-Copilot")
+        result["blockchain"] = codify_repo("alexandrepedrosaai", "Blockchain-AI-Usage")
+
+    if args.out:
+        save_json(result, args.out)
+        print(f"✓ JSON salvo em {args.out}")
+
+    if args.csv:
+        rows = []
+        if "grok" in result:
+            rows.extend([
+                {
+                    "repo": "GROK--Coopetition--GitHub-Copilot",
+                    "number": pr.get("number"),
+                    "title": pr.get("title"),
+                    "state": pr.get("state"),
+                    "merged": bool(pr.get("merged_at")),
+                    "user": (pr.get("user") or {}).get("login"),
+                    "created_at": pr.get("created_at"),
+                    "closed_at": pr.get("closed_at"),
+                    "html_url": pr.get("html_url"),
+                }
+                for pr in result["grok"]["pull_requests"]
+            ])
+        if "blockchain" in result:
+            rows.extend([
+                {
+                    "repo": "Blockchain-AI-Usage",
+                    "sha": cm.get("sha"),
+                    "message": (cm.get("commit") or {}).get("message"),
+                    "author": ((cm.get("commit") or {}).get("author") or {}).get("name"),
+                    "date": ((cm.get("commit") or {}).get("author") or {}).get("date"),
+                    "html_url": cm.get("html_url"),
+                }
+                for cm in result["blockchain"]["commits"]
+            ])
+        save_csv(rows, args.csv)
+        print(f"✓ CSV salvo em {args.csv}")
+
+    if not args.out and not args.csv:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+    if __name__ == "__main__":
+    main()
+'''
+---
 
 ## GitHub Copilot and Claude in AI Usage
 
