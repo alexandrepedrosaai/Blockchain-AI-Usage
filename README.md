@@ -2197,3 +2197,408 @@ if __name__ == "__main__":
 }
 `````
 ----
+# Simulator codes 
+```
+import hashlib
+import time
+from typing import List, Dict
+
+# -------------------------------
+# Blockchain Layer (Trust + Transparency)
+# -------------------------------
+class Block:
+    def __init__(self, index: int, timestamp: str, data: Dict, previous_hash: str):
+        self.index = index
+        self.timestamp = timestamp
+        self.data = data  # AI outputs or governance decisions
+        self.previous_hash = previous_hash
+        self.hash = self.calculate_hash()
+
+    def calculate_hash(self) -> str:
+        block_string = f"{self.index}{self.timestamp}{self.data}{self.previous_hash}"
+        return hashlib.sha256(block_string.encode()).hexdigest()
+
+class Blockchain:
+    def __init__(self):
+        self.chain: List[Block] = [self.create_genesis_block()]
+
+    def create_genesis_block(self) -> Block:
+        return Block(0, str(time.time()), {"message": "Genesis Block"}, "0")
+
+    def get_latest_block(self) -> Block:
+        return self.chain[-1]
+
+    def add_block(self, data: Dict):
+        latest_block = self.get_latest_block()
+        new_block = Block(len(self.chain), str(time.time()), data, latest_block.hash)
+        self.chain.append(new_block)
+
+    def is_chain_valid(self) -> bool:
+        for i in range(1, len(self.chain)):
+            current = self.chain[i]
+            previous = self.chain[i - 1]
+            if current.hash != current.calculate_hash():
+                return False
+            if current.previous_hash != previous.hash:
+                return False
+        return True
+
+# -------------------------------
+# AI Modules (Simulation of Domains)
+# -------------------------------
+class CopilotAI:
+    def process(self, input_text: str) -> str:
+        return f"Copilot processed: {input_text.upper()}"
+
+class ClaudeAI:
+    def process(self, input_text: str) -> str:
+        return f"Claude ensured ethical response to: {input_text}"
+
+class GeminiAI:
+    def process(self, input_text: str) -> str:
+        return f"Gemini contextualized search for: {input_text}"
+
+class MetaAI:
+    def process(self, input_text: str) -> str:
+        return f"Meta LLaMA analyzed open-source context for: {input_text}"
+
+class xAI:
+    def process(self, input_text: str) -> str:
+        return f"xAI Grok provided creative reasoning for: {input_text}"
+
+# -------------------------------
+# USAGE Governance Layer (Mediator)
+# -------------------------------
+class USAGEGovernance:
+    def __init__(self, blockchain: Blockchain):
+        self.blockchain = blockchain
+        self.copilot = CopilotAI()
+        self.claude = ClaudeAI()
+        self.gemini = GeminiAI()
+        self.meta = MetaAI()
+        self.xai = xAI()
+
+    def harmonize(self, input_text: str) -> Dict:
+        # Each AI processes the input
+        copilot_output = self.copilot.process(input_text)
+        claude_output = self.claude.process(input_text)
+        gemini_output = self.gemini.process(input_text)
+        meta_output = self.meta.process(input_text)
+        xai_output = self.xai.process(input_text)
+
+        # Harmonization: combine outputs
+        harmonized = {
+            "input": input_text,
+            "copilot": copilot_output,
+            "claude": claude_output,
+            "gemini": gemini_output,
+            "meta": meta_output,
+            "xai": xai_output,
+            "decision": f"Harmonized governance applied to '{input_text}'"
+        }
+
+        # Record decision in blockchain
+        self.blockchain.add_block(harmonized)
+        return harmonized
+
+# -------------------------------
+# Demo Execution
+# -------------------------------
+if __name__ == "__main__":
+    # Initialize blockchain + governance
+    blockchain = Blockchain()
+    usage = USAGEGovernance(blockchain)
+
+    # Example inputs
+    inputs = ["AI in browsers", "Blockchain trust", "Ethical interoperability"]
+
+    for text in inputs:
+        result = usage.harmonize(text)
+        print("Governance Result:", result)
+        print("-" * 60)
+
+    # Validate blockchain integrity
+    print("Blockchain valid?", blockchain.is_chain_valid())
+    print("Blockchain length:", len(blockchain.chain))
+```
+## Blockchain Layer
+```
+import hashlib
+import time
+from typing import List, Dict
+
+# -------------------------------
+# Blockchain Layer (Trust + Transparency)
+# -------------------------------
+class Block:
+    def __init__(self, index: int, timestamp: str, data: Dict, previous_hash: str):
+        self.index = index
+        self.timestamp = timestamp
+        self.data = data
+        self.previous_hash = previous_hash
+        self.hash = self.calculate_hash()
+
+    def calculate_hash(self) -> str:
+        block_string = f"{self.index}{self.timestamp}{self.data}{self.previous_hash}"
+        return hashlib.sha256(block_string.encode()).hexdigest()
+
+class Blockchain:
+    def __init__(self):
+        self.chain: List[Block] = [self.create_genesis_block()]
+
+    def create_genesis_block(self) -> Block:
+        return Block(0, str(time.time()), {"message": "Genesis Block"}, "0")
+
+    def get_latest_block(self) -> Block:
+        return self.chain[-1]
+
+    def add_block(self, data: Dict):
+        latest_block = self.get_latest_block()
+        new_block = Block(len(self.chain), str(time.time()), data, latest_block.hash)
+        self.chain.append(new_block)
+
+    def is_chain_valid(self) -> bool:
+        for i in range(1, len(self.chain)):
+            current = self.chain[i]
+            previous = self.chain[i - 1]
+            if current.hash != current.calculate_hash():
+                return False
+            if current.previous_hash != previous.hash:
+                return False
+        return True
+
+# -------------------------------
+# AI Modules (Simulation of Domains)
+# -------------------------------
+class CopilotAI:
+    def process(self, input_text: str) -> str:
+        return f"Copilot processed: {input_text.upper()}"
+
+class ClaudeAI:
+    def process(self, input_text: str) -> str:
+        return f"Claude ensured ethical response to: {input_text}"
+
+class GeminiAI:
+    def process(self, input_text: str) -> str:
+        return f"Gemini contextualized search for: {input_text}"
+
+class MetaAI:
+    def process(self, input_text: str) -> str:
+        return f"Meta LLaMA analyzed open-source context for: {input_text}"
+
+class xAI:
+    def process(self, input_text: str) -> str:
+        return f"xAI Grok provided creative reasoning for: {input_text}"
+
+# -------------------------------
+# USAGE Governance Layer (Consensus Mediator)
+# -------------------------------
+class USAGEGovernance:
+    def __init__(self, blockchain: Blockchain):
+        self.blockchain = blockchain
+        self.copilot = CopilotAI()
+        self.claude = ClaudeAI()
+        self.gemini = GeminiAI()
+        self.meta = MetaAI()
+        self.xai = xAI()
+
+    def harmonize_with_consensus(self, input_text: str) -> Dict:
+        # Each AI processes the input
+        outputs = {
+            "copilot": self.copilot.process(input_text),
+            "claude": self.claude.process(input_text),
+            "gemini": self.gemini.process(input_text),
+            "meta": self.meta.process(input_text),
+            "xai": self.xai.process(input_text)
+        }
+
+        # Consensus mechanism: simple majority vote on "preferred style"
+        # For demo, we simulate by picking the most frequent keyword among outputs
+        votes = []
+        for name, output in outputs.items():
+            if "ethical" in output.lower():
+                votes.append("ethics")
+            elif "context" in output.lower() or "search" in output.lower():
+                votes.append("context")
+            elif "creative" in output.lower():
+                votes.append("creativity")
+            else:
+                votes.append("productivity")
+
+        # Count votes
+        decision_category = max(set(votes), key=votes.count)
+
+        harmonized = {
+            "input": input_text,
+            "outputs": outputs,
+            "votes": votes,
+            "consensus": decision_category,
+            "decision": f"Consensus reached: {decision_category} priority for '{input_text}'"
+        }
+
+        # Record decision in blockchain
+        self.blockchain.add_block(harmonized)
+        return harmonized
+
+# -------------------------------
+# Demo Execution
+# -------------------------------
+if __name__ == "__main__":
+    blockchain = Blockchain()
+    usage = USAGEGovernance(blockchain)
+
+    inputs = ["AI in browsers", "Blockchain trust", "Ethical interoperability"]
+
+    for text in inputs:
+        result = usage.harmonize_with_consensus(text)
+        print("Governance Result:", result)
+        print("-" * 60)
+
+    print("Blockchain valid?", blockchain.is_chain_valid())
+    print("Blockchain length:", len(blockchain.chain))
+````
+## Imput/outputs
+```
+import hashlib
+import time
+from typing import List, Dict
+
+# -------------------------------
+# Blockchain Layer (Trust + Transparency)
+# -------------------------------
+class Block:
+    def __init__(self, index: int, timestamp: str, data: Dict, previous_hash: str):
+        self.index = index
+        self.timestamp = timestamp
+        self.data = data
+        self.previous_hash = previous_hash
+        self.hash = self.calculate_hash()
+
+    def calculate_hash(self) -> str:
+        block_string = f"{self.index}{self.timestamp}{self.data}{self.previous_hash}"
+        return hashlib.sha256(block_string.encode()).hexdigest()
+
+class Blockchain:
+    def __init__(self):
+        self.chain: List[Block] = [self.create_genesis_block()]
+
+    def create_genesis_block(self) -> Block:
+        return Block(0, str(time.time()), {"message": "Genesis Block"}, "0")
+
+    def get_latest_block(self) -> Block:
+        return self.chain[-1]
+
+    def add_block(self, data: Dict):
+        latest_block = self.get_latest_block()
+        new_block = Block(len(self.chain), str(time.time()), data, latest_block.hash)
+        self.chain.append(new_block)
+
+    def is_chain_valid(self) -> bool:
+        for i in range(1, len(self.chain)):
+            current = self.chain[i]
+            previous = self.chain[i - 1]
+            if current.hash != current.calculate_hash():
+                return False
+            if current.previous_hash != previous.hash:
+                return False
+        return True
+
+# -------------------------------
+# AI Modules (Simulation of Domains)
+# -------------------------------
+class CopilotAI:
+    def process(self, input_text: str) -> str:
+        return f"Copilot processed: {input_text.upper()}"
+
+class ClaudeAI:
+    def process(self, input_text: str) -> str:
+        return f"Claude ensured ethical response to: {input_text}"
+
+class GeminiAI:
+    def process(self, input_text: str) -> str:
+        return f"Gemini contextualized search for: {input_text}"
+
+class MetaAI:
+    def process(self, input_text: str) -> str:
+        return f"Meta LLaMA analyzed open-source context for: {input_text}"
+
+class xAI:
+    def process(self, input_text: str) -> str:
+        return f"xAI Grok provided creative reasoning for: {input_text}"
+
+# -------------------------------
+# USAGE Governance Layer (Consensus Mediator)
+# -------------------------------
+class USAGEGovernance:
+    def __init__(self, blockchain: Blockchain):
+        self.blockchain = blockchain
+        self.copilot = CopilotAI()
+        self.claude = ClaudeAI()
+        self.gemini = GeminiAI()
+        self.meta = MetaAI()
+        self.xai = xAI()
+
+    def harmonize_with_consensus(self, input_text: str) -> Dict:
+        outputs = {
+            "copilot": self.copilot.process(input_text),
+            "claude": self.claude.process(input_text),
+            "gemini": self.gemini.process(input_text),
+            "meta": self.meta.process(input_text),
+            "xai": self.xai.process(input_text)
+        }
+
+        # Consensus voting based on keywords
+        votes = []
+        for output in outputs.values():
+            if "ethical" in output.lower():
+                votes.append("ethics")
+            elif "context" in output.lower() or "search" in output.lower():
+                votes.append("context")
+            elif "creative" in output.lower():
+                votes.append("creativity")
+            else:
+                votes.append("productivity")
+
+        decision_category = max(set(votes), key=votes.count)
+
+        harmonized = {
+            "input": input_text,
+            "outputs": outputs,
+            "votes": votes,
+            "consensus": decision_category,
+            "decision": f"Consensus reached: {decision_category} priority for '{input_text}'"
+        }
+
+        self.blockchain.add_block(harmonized)
+        return harmonized
+
+# -------------------------------
+# Interactive Input/Output
+# -------------------------------
+if __name__ == "__main__":
+    blockchain = Blockchain()
+    usage = USAGEGovernance(blockchain)
+
+    print("=== USAGE Governance System with Blockchain ===")
+    print("Type 'exit' to quit.\n")
+
+    while True:
+        user_input = input("Enter a topic or phrase: ")
+        if user_input.lower() == "exit":
+            break
+
+        result = usage.harmonize_with_consensus(user_input)
+        print("\n--- Governance Result ---")
+        print("Input:", result["input"])
+        print("Consensus:", result["consensus"])
+        print("Decision:", result["decision"])
+        print("Votes:", result["votes"])
+        print("Outputs from AIs:")
+        for ai, output in result["outputs"].items():
+            print(f" {ai}: {output}")
+        print("-------------------------\n")
+
+    print("Blockchain valid?", blockchain.is_chain_valid())
+    print("Blockchain length:", len(blockchain.chain))
+```
+---
