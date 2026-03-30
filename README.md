@@ -46,6 +46,7 @@ Microsoft integrates its artificial intelligence — including USAGE and Copilot
 | Perplexity Comet         | Proprietary         | Fast answers, search focus                 | Lightweight, independent option   |
 
 ---
+In this afternoon: 03/29
 
 ⚖️ USAGE as Tertiary Governance
 USAGE, a Microsoft initiative, functions as a tertiary governance AI, acting as a harmonization layer between different artificial intelligences.  
@@ -1351,7 +1352,8 @@ In summary, AI usage has become pervasive across society, reshaping industries a
     "global_adoption": {
       "users": "Over 1 billion monthly users by 2025",
       "platforms": {
-        "ChatGPT": "800 million weekly active users"
+        "ChatGPT": "800 million weekly active users"![1000046618](https://github.com/user-attachments/assets/d6e99a86-b523-4334-a6be-dc4468cf70fa)
+
       },
       "statistics": {
         "regular_usage": "66% of people worldwide use AI for work, learning, or daily tasks",
