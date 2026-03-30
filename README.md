@@ -441,6 +441,9 @@ These models are hosted via OpenAI and GitHub’s Azure infrastructure, with str
 | Stage 1 | GPT‑4.1 and GPT‑5 mini in GitHub Copilot | Basic code suggestions, autocomplete |
 | Stage 2 | GPT‑5.1 Codex + Claude Sonnet 4 in GitHub Chat | Multi‑model reasoning, context‑aware coding, API orchestration |
 | Stage 3 (emerging) | GPT‑5.2 Codex + Claude Code Terminal Orchestrator | Full‑stack automation, terminal control, secure auth flows |
+# Update: at this Afternoon (03/29), Google integration 
+![1000046618](https://github.com/user-attachments/assets/a72b4b07-c9f6-4887-8025-4170c90f866b)
+
 
 ---
 
