@@ -1,1 +1,52 @@
-{"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"},"language_info":{"mimetype":"text/x-r-source","name":"R","pygments_lexer":"r","version":"3.4.2","file_extension":".r","codemirror_mode":"r"},"kaggle":{"accelerator":"none","dataSources":[{"sourceType":"datasetVersion","sourceId":17402792},{"sourceType":"datasetVersion","sourceId":16728534},{"sourceType":"datasetVersion","sourceId":17218610},{"sourceType":"datasetVersion","sourceId":16733146}],"isInternetEnabled":true,"language":"rmarkdown","sourceType":"script","isGpuEnabled":false}},"nbformat_minor":4,"nbformat":4,"cells":[{"cell_type":"code","source":"---\ntitle: 'EVP Microsoft and SpaceX'\nauthor: 'Alexandre Pedrosa'\ndate: '`r Sys.Date()`'\noutput:\n  html_document:\n    number_sections: true\n    toc: true\n---\n\n## Importing packages\n\nThis R environment comes with many helpful analytics packages installed\nIt is defined by the kaggle/rstats Docker image: https://github.com/kaggle/docker-rstats\nFor example, here's a helpful package to load\n\n```{r}\nlibrary(tidyverse) # metapackage of all tidyverse packages\n```\n\n## Running code\n\nIn a notebook, you can run a single code cell by clicking in the cell and then hitting \nthe blue arrow to the left, or by clicking in the cell and pressing Shift+Enter. In a script, \nyou can run code by highlighting the code you want to run and then clicking the blue arrow\nat the bottom of this window.\n\n## Reading in files\n\nInput data files are available in the read-only \"../input/\" directory\nFor example, running the code below will list all files under the input directory\n\n```{r}\nlist.files(path = \"../input\")\n```\n\n## Saving data\n\nYou can write up to 20GB to the current directory (/kaggle/working/) that gets preserved \nas output when you create a version using \"Save & Run All\" \nYou can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session\n\n## Plotting data and output visuals\n\nRmarkdown scripts can display plots inline with the flow of the analysis. Here is an example for an in-built dataset:\n\n```{r}\nmtcars %>% \n  ggplot(aes(hp, mpg)) +\n  geom_point() +\n  labs(x = \"Horse Power\", y = \"Miles per Gallon\", title = \"Car Parameters\")\n```","metadata":{"_uuid":"22b73d83-eb5c-4201-a2b6-62d100f2ec1c","_cell_guid":"2d6670fd-6885-43a7-9241-7903da74d3f1","trusted":true,"collapsed":false,"jupyter":{"outputs_hidden":false}},"outputs":[],"execution_count":null}]}
+---
+title: 'EVP Microsoft and SpaceX'
+author: 'Alexandre Pedrosa'
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    number_sections: true
+    toc: true
+---
+
+## Importing packages
+
+This R environment comes with many helpful analytics packages installed
+It is defined by the kaggle/rstats Docker image: https://github.com/kaggle/docker-rstats
+For example, here's a helpful package to load
+
+```{r}
+library(tidyverse) # metapackage of all tidyverse packages
+```
+
+## Running code
+
+In a notebook, you can run a single code cell by clicking in the cell and then hitting 
+the blue arrow to the left, or by clicking in the cell and pressing Shift+Enter. In a script, 
+you can run code by highlighting the code you want to run and then clicking the blue arrow
+at the bottom of this window.
+
+## Reading in files
+
+Input data files are available in the read-only "../input/" directory
+For example, running the code below will list all files under the input directory
+
+```{r}
+list.files(path = "../input")
+```
+
+## Saving data
+
+You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved 
+as output when you create a version using "Save & Run All" 
+You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+
+## Plotting data and output visuals
+
+Rmarkdown scripts can display plots inline with the flow of the analysis. Here is an example for an in-built dataset:
+
+```{r}
+mtcars %>% 
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  labs(x = "Horse Power", y = "Miles per Gallon", title = "Car Parameters")
+```
